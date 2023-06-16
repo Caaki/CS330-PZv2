@@ -21,18 +21,125 @@ class AnimeMainPageVIewModel @Inject constructor(
     private val _state = mutableStateOf(AnimeMainPageState())
     val state: State<AnimeMainPageState> = _state
 
-    private fun loadAction(tag: String){
-        getAnimeByTag(tag).onEach {
+    init{
+        loadAction()
+    }
+
+    private fun loadAllMainPageAnime(){
+        loadAction()
+
+    }
+
+    private fun loadAction(){
+        getAnimeByTag("action").onEach {
             result->
             when(result){
+                is Resource.Success -> {
+                    _state.value = AnimeMainPageState(
+                        action_anime = result.data?: emptyList()
+                    )
+                }
                 is Resource.Error -> {
-
+                    _state.value = AnimeMainPageState(
+                        error = result.message?: "An unexpected error occurred"
+                    )
                 }
                 is Resource.Loading -> {
+                    _state.value = AnimeMainPageState(
+                        isLoading = true
+                    )
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
 
+    private fun loadMystery(){
+        getAnimeByTag("mystery").onEach {
+                result->
+            when(result){
+                is Resource.Error -> {
+                    _state.value = AnimeMainPageState(
+                        mystery_anime = result.data?: emptyList()
+                    )
+                }
+                is Resource.Loading -> {
+                    _state.value = AnimeMainPageState(
+                        error = result.message?: "An unexpected error occurred"
+                    )
                 }
                 is Resource.Success -> {
+                    _state.value = AnimeMainPageState(
+                        isLoading = true
+                    )
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
 
+    private fun loadRomance(){
+        getAnimeByTag("romance").onEach {
+                result->
+            when(result){
+                is Resource.Error -> {
+                    _state.value = AnimeMainPageState(
+                        romance_anime = result.data?: emptyList()
+                    )
+                }
+                is Resource.Loading -> {
+                    _state.value = AnimeMainPageState(
+                        error = result.message?: "An unexpected error occurred"
+                    )
+                }
+                is Resource.Success -> {
+                    _state.value = AnimeMainPageState(
+                        isLoading = true
+                    )
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private fun loadShonen(){
+        getAnimeByTag("shonen").onEach {
+                result->
+            when(result){
+                is Resource.Error -> {
+                    _state.value = AnimeMainPageState(
+                        shonen_anime = result.data?: emptyList()
+                    )
+                }
+                is Resource.Loading -> {
+                    _state.value = AnimeMainPageState(
+                        error = result.message?: "An unexpected error occurred"
+                    )
+                }
+                is Resource.Success -> {
+                    _state.value = AnimeMainPageState(
+                        isLoading = true
+                    )
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    private fun loadIsekai(){
+        getAnimeByTag("isekai").onEach {
+                result->
+            when(result){
+                is Resource.Error -> {
+                    _state.value = AnimeMainPageState(
+                        isekai_anime = result.data?: emptyList()
+                    )
+                }
+                is Resource.Loading -> {
+                    _state.value = AnimeMainPageState(
+                        error = result.message?: "An unexpected error occurred"
+                    )
+                }
+                is Resource.Success -> {
+                    _state.value = AnimeMainPageState(
+                        isLoading = true
+                    )
                 }
             }
         }.launchIn(viewModelScope)
