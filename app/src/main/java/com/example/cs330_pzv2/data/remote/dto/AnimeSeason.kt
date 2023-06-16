@@ -1,4 +1,4 @@
-package com.example.cs330_pzv2.data.dto
+package com.example.cs330_pzv2.data.remote.dto
 
 data class AnimeSeason(
     val season: String,

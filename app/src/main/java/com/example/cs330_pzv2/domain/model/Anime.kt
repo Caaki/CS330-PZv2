@@ -1,6 +1,6 @@
 package com.example.cs330_pzv2.domain.model
 
-import com.example.cs330_pzv2.data.dto.AnimeSeason
+import com.example.cs330_pzv2.data.remote.dto.AnimeSeason
 
 data class Anime(
     val episodes: Int,

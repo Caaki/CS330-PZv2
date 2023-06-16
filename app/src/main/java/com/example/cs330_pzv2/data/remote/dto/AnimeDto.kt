@@ -1,4 +1,7 @@
-package com.example.cs330_pzv2.data.dto
+package com.example.cs330_pzv2.data.remote.dto
+
+import com.example.cs330_pzv2.domain.model.Anime
+import com.example.cs330_pzv2.domain.model.AnimeDetail
 
 data class AnimeDto(
     val animeSeason: AnimeSeason,

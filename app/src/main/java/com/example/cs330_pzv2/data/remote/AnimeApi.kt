@@ -1,6 +1,6 @@
 package com.example.cs330_pzv2.data.remote
 
-import com.example.cs330_pzv2.data.dto.AnimeDto
+import com.example.cs330_pzv2.data.remote.dto.AnimeDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
