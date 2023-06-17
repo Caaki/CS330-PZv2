@@ -26,15 +26,16 @@ class AnimeMainPageVIewModel @Inject constructor(
 
     }
 
+    private var dataLoadingCounter = 0
+
     private fun loadAllAnime(){
+        dataLoadingCounter = 5
         loadShonen()
         loadAction()
         loadIsekai()
         loadMystery()
         loadRomance()
-        _state.value = _state.value.copy(
-            isLoading = false
-        )
+
     }
 
     private fun loadAction(){
@@ -45,6 +46,7 @@ class AnimeMainPageVIewModel @Inject constructor(
                     _state.value = _state.value.copy(
                         action_anime = result.data?: emptyList()
                     )
+                    decrementDataLoadingCounter()
                 }
                 is Resource.Error -> {
                     _state.value = _state.value.copy(
@@ -68,6 +70,7 @@ class AnimeMainPageVIewModel @Inject constructor(
                     _state.value = _state.value.copy(
                         mystery_anime = result.data?: emptyList()
                     )
+                    decrementDataLoadingCounter()
                 }
                 is Resource.Error -> {
                     _state.value = _state.value.copy(
@@ -91,6 +94,7 @@ class AnimeMainPageVIewModel @Inject constructor(
                     _state.value = _state.value.copy(
                         romance_anime = result.data?: emptyList()
                     )
+                    decrementDataLoadingCounter()
                 }
                 is Resource.Error -> {
                     _state.value = _state.value.copy(
@@ -114,6 +118,7 @@ class AnimeMainPageVIewModel @Inject constructor(
                     _state.value = _state.value.copy(
                         yandere_anime = result.data?: emptyList()
                     )
+                    decrementDataLoadingCounter()
                 }
                 is Resource.Error -> {
                     _state.value = _state.value.copy(
@@ -137,6 +142,7 @@ class AnimeMainPageVIewModel @Inject constructor(
                     _state.value = _state.value.copy(
                         isekai_anime = result.data?: emptyList()
                     )
+                    decrementDataLoadingCounter()
                 }
                 is Resource.Error -> {
                     _state.value = _state.value.copy(
@@ -150,6 +156,15 @@ class AnimeMainPageVIewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun decrementDataLoadingCounter() {
+        dataLoadingCounter--
+        if (dataLoadingCounter == 0) {
+            _state.value = _state.value.copy(
+                isLoading = false
+            )
+        }
     }
 
 }
