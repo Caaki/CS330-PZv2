@@ -22,13 +22,18 @@ class AnimeMainPageVIewModel @Inject constructor(
     val state: State<AnimeMainPageState> = _state
 
     init{
-        loadAction()
-    }
 
-    private fun loadAllMainPageAnime(){
-        loadAction()
+        loadIsekai()
 
     }
+
+//    private fun loadAllMainPageAnime(){
+//        loadShonen()
+//        loadAction()
+//        loadIsekai()
+//        loadMystery()
+//        loadRomance()
+//    }
 
     private fun loadAction(){
         getAnimeByTag("action").onEach {
@@ -57,17 +62,17 @@ class AnimeMainPageVIewModel @Inject constructor(
         getAnimeByTag("mystery").onEach {
                 result->
             when(result){
-                is Resource.Error -> {
+                is Resource.Success -> {
                     _state.value = AnimeMainPageState(
                         mystery_anime = result.data?: emptyList()
                     )
                 }
-                is Resource.Loading -> {
+                is Resource.Error -> {
                     _state.value = AnimeMainPageState(
                         error = result.message?: "An unexpected error occurred"
                     )
                 }
-                is Resource.Success -> {
+                is Resource.Loading -> {
                     _state.value = AnimeMainPageState(
                         isLoading = true
                     )
@@ -80,17 +85,17 @@ class AnimeMainPageVIewModel @Inject constructor(
         getAnimeByTag("romance").onEach {
                 result->
             when(result){
-                is Resource.Error -> {
+                is Resource.Success -> {
                     _state.value = AnimeMainPageState(
                         romance_anime = result.data?: emptyList()
                     )
                 }
-                is Resource.Loading -> {
+                is Resource.Error -> {
                     _state.value = AnimeMainPageState(
                         error = result.message?: "An unexpected error occurred"
                     )
                 }
-                is Resource.Success -> {
+                is Resource.Loading -> {
                     _state.value = AnimeMainPageState(
                         isLoading = true
                     )
@@ -103,17 +108,17 @@ class AnimeMainPageVIewModel @Inject constructor(
         getAnimeByTag("shonen").onEach {
                 result->
             when(result){
-                is Resource.Error -> {
+                is Resource.Success -> {
                     _state.value = AnimeMainPageState(
                         shonen_anime = result.data?: emptyList()
                     )
                 }
-                is Resource.Loading -> {
+                is Resource.Error -> {
                     _state.value = AnimeMainPageState(
                         error = result.message?: "An unexpected error occurred"
                     )
                 }
-                is Resource.Success -> {
+                is Resource.Loading -> {
                     _state.value = AnimeMainPageState(
                         isLoading = true
                     )
@@ -126,17 +131,17 @@ class AnimeMainPageVIewModel @Inject constructor(
         getAnimeByTag("isekai").onEach {
                 result->
             when(result){
-                is Resource.Error -> {
+                is Resource.Success -> {
                     _state.value = AnimeMainPageState(
                         isekai_anime = result.data?: emptyList()
                     )
                 }
-                is Resource.Loading -> {
+                is Resource.Error -> {
                     _state.value = AnimeMainPageState(
                         error = result.message?: "An unexpected error occurred"
                     )
                 }
-                is Resource.Success -> {
+                is Resource.Loading -> {
                     _state.value = AnimeMainPageState(
                         isLoading = true
                     )

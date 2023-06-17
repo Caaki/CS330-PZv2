@@ -1,6 +1,8 @@
 package com.example.cs330_pzv2.presentation.anime_main_page.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,22 +28,44 @@ import com.example.cs330_pzv2.presentation.anime_main_page.AnimeMainPageVIewMode
 fun TestScreen(
     navController: NavController,
     viewModel: AnimeMainPageVIewModel = hiltViewModel()
-){
+) {
 
     val state = viewModel.state.value
 
-    Box(modifier = Modifier.fillMaxSize()){
-        LazyRow(modifier = Modifier.height(400.dp)){
-            items(state.action_anime){
-                    anime->
-                TestComposeItem(anime = anime, onItemClick = {
-                    //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
-                },
+    Column(modifier = Modifier.fillMaxSize()) {
+        LazyRow(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .padding(horizontal = 16.dp)
+        ) {
+            items(state.isekai_anime) { anime ->
+                TestComposeItem(
+                    anime = anime, onItemClick = {
+                        //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                    },
                     modifier = Modifier.padding(16.dp)
                 )
             }
         }
-        if(state.error.isNotBlank()){
+
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .padding(horizontal = 16.dp)
+        ) {
+            items(state.isekai_anime) { anime ->
+                TestComposeItem(
+                    anime = anime, onItemClick = {
+                        //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                    },
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+
+        if (state.error.isNotBlank()) {
             Text(
                 text = state.error,
                 color = Color.Red,
@@ -49,11 +73,15 @@ fun TestScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
-                    .align(Alignment.Center)
+                    .align(Alignment.CenterHorizontally)
             )
         }
-        if (state.isLoading){
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        if (state.isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 16.dp)
+            )
         }
     }
 }

@@ -24,7 +24,6 @@ interface AnimeApi {
     suspend fun getAnimeByTag(
         @Query("tags_like") tag: String,
         @Query("_page") page: Int = 1,
-        @Query("title_regex_flags") flags: String = "i"
     ):List<AnimeDto>
 
 
