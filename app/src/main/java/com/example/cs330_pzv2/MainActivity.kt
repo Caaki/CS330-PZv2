@@ -6,15 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cs330_pzv2.presentation.Screen
-import com.example.cs330_pzv2.presentation.anime_main_page.components.TestScreen
+import com.example.cs330_pzv2.presentation.anime_main_page.components.TestComponents.TestScreen
 import com.example.cs330_pzv2.ui.theme.CS330PZv2Theme
 import dagger.hilt.android.AndroidEntryPoint
 

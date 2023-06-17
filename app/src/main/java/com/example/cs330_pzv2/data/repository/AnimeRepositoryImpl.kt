@@ -23,4 +23,8 @@ class AnimeRepositoryImpl @Inject constructor(
     override suspend fun getAnimeByTag(tag: String): List<AnimeDto> {
         return api.getAnimeByTag(tag)
     }
+
+    override suspend fun getAnimeByTagMainPage(tag: String): List<AnimeDto> {
+        return api.getAnimeByTagMainPage(tag)
+    }
 }

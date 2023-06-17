@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cs330_pzv2.common.Resource
+import com.example.cs330_pzv2.domain.use_case.get_anime_for_main_page.GetAnimeByTagForMainPage
 import com.example.cs330_pzv2.domain.use_case.get_by_tag.GetAnimeByTag
 import com.example.cs330_pzv2.domain.use_case.get_by_title.GetAnimeByTitle
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AnimeMainPageVIewModel @Inject constructor(
     private val getAnimeByTag : GetAnimeByTag,
-    private val getAnimeByTitle: GetAnimeByTitle
+    private val getAnimeByTitle: GetAnimeByTitle,
+    private val getAnimeByTagForMainPage: GetAnimeByTagForMainPage
 ): ViewModel(){
 
     private val _state = mutableStateOf(AnimeMainPageState())
@@ -23,14 +25,13 @@ class AnimeMainPageVIewModel @Inject constructor(
 
     init{
       loadAllAnime()
-
     }
 
     private var dataLoadingCounter = 0
 
     private fun loadAllAnime(){
         dataLoadingCounter = 5
-        loadShonen()
+        loadYandere()
         loadAction()
         loadIsekai()
         loadMystery()
@@ -39,7 +40,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
     private fun loadAction(){
-        getAnimeByTag("action").onEach {
+        getAnimeByTagForMainPage("action").onEach {
             result->
             when(result){
                 is Resource.Success -> {
@@ -63,7 +64,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
     private fun loadMystery(){
-        getAnimeByTag("mystery").onEach {
+        getAnimeByTagForMainPage("mystery").onEach {
                 result->
             when(result){
                 is Resource.Success -> {
@@ -87,7 +88,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
     private fun loadRomance(){
-        getAnimeByTag("romance").onEach {
+        getAnimeByTagForMainPage("romance").onEach {
                 result->
             when(result){
                 is Resource.Success -> {
@@ -110,7 +111,7 @@ class AnimeMainPageVIewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    private fun loadShonen(){
+    private fun loadYandere(){
         getAnimeByTag("yandere").onEach {
                 result->
             when(result){
@@ -135,7 +136,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
     private fun loadIsekai(){
-        getAnimeByTag("isekai").onEach {
+        getAnimeByTagForMainPage("isekai").onEach {
                 result->
             when(result){
                 is Resource.Success -> {
@@ -160,7 +161,7 @@ class AnimeMainPageVIewModel @Inject constructor(
 
     private fun decrementDataLoadingCounter() {
         dataLoadingCounter--
-        if (dataLoadingCounter == 0) {
+        if (dataLoadingCounter <= 0) {
             _state.value = _state.value.copy(
                 isLoading = false
             )

@@ -85,7 +85,7 @@ fun CS330PZv2Theme(
     }
 
     MaterialTheme(
-        colorScheme = DarkColors,
+        colorScheme = colors,
         content = content
     )
 }

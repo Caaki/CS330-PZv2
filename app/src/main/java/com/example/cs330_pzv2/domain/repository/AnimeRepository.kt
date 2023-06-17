@@ -1,6 +1,7 @@
 package com.example.cs330_pzv2.domain.repository
 
 import com.example.cs330_pzv2.data.remote.dto.AnimeDto
+import com.example.cs330_pzv2.domain.model.Anime
 
 interface AnimeRepository {
 
@@ -11,6 +12,10 @@ interface AnimeRepository {
     suspend fun getAnimeByTitle(title: String): List<AnimeDto>
 
     suspend fun getAnimeByTag(tag: String): List<AnimeDto>
+
+    suspend fun getAnimeByTagMainPage(tag: String) :List<AnimeDto>
+
+
 
 
 }
