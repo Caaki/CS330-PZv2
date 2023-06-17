@@ -9,7 +9,7 @@ data class AnimeMainPageState(
     val action_anime: List<Anime> = emptyList(),
     val mystery_anime: List<Anime> = emptyList(),
     val romance_anime: List<Anime> = emptyList(),
-    val shonen_anime: List<Anime> = emptyList(),
+    val yandere_anime: List<Anime> = emptyList(),
     val isekai_anime: List<Anime> = emptyList(),
     val search_anime: List<Anime> = emptyList()
 

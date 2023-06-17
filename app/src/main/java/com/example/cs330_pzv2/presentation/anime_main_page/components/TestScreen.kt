@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.cs330_pzv2.presentation.anime_main_page.AnimeMainPageState
@@ -32,11 +33,35 @@ fun TestScreen(
 
     val state = viewModel.state.value
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item {
+            Text(text = "Action anime",
+                fontSize = 50.sp,
+                modifier=Modifier.padding(10.dp))
+            LazyRow(
+                modifier = Modifier
+                    .height(400.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+
+                items(state.action_anime) { anime ->
+                    TestComposeItem(
+                        anime = anime, onItemClick = {
+                            //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                        },
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+            }
+        }
+
+    item {
+        Text(text = "Isekai anime",
+            fontSize = 50.sp,
+            modifier=Modifier.padding(10.dp))
         LazyRow(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
+                .height(400.dp)
                 .padding(horizontal = 16.dp)
         ) {
             items(state.isekai_anime) { anime ->
@@ -48,40 +73,94 @@ fun TestScreen(
                 )
             }
         }
+    }
 
-        LazyColumn(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .padding(horizontal = 16.dp)
-        ) {
-            items(state.isekai_anime) { anime ->
-                TestComposeItem(
-                    anime = anime, onItemClick = {
-                        //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
-                    },
-                    modifier = Modifier.padding(16.dp)
-                )
+        item {
+            Text(text = "Shonen anime",
+                fontSize = 50.sp,
+                modifier=Modifier.padding(10.dp))
+            LazyRow(
+                modifier = Modifier
+                    .height(400.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+
+                items(state.yandere_anime) { anime ->
+                    TestComposeItem(
+                        anime = anime, onItemClick = {
+                            //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                        },
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+            }
+        }
+
+        item {
+            Text(text = "Romance anime",
+                fontSize = 50.sp,
+                modifier=Modifier.padding(10.dp))
+            LazyRow(
+                modifier = Modifier
+                    .height(400.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+
+                items(state.romance_anime) { anime ->
+                    TestComposeItem(
+                        anime = anime, onItemClick = {
+                            //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                        },
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+            }
+        }
+
+        item {
+            Text(text = "Mystery anime",
+                fontSize = 50.sp,
+                modifier=Modifier.padding(10.dp))
+            LazyRow(
+                modifier = Modifier
+                    .height(400.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+
+                items(state.mystery_anime) { anime ->
+                    TestComposeItem(
+                        anime = anime, onItemClick = {
+                            //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                        },
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
             }
         }
 
         if (state.error.isNotBlank()) {
-            Text(
-                text = state.error,
-                color = Color.Red,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
+            item {
+
+                Text(
+                    text = state.error,
+                    color = Color.Red,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+
+                )
+            }
         }
         if (state.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(top = 16.dp)
-            )
+            item {
+                Text(text = "Something is loading???")
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                )
+            }
         }
     }
 }
+
