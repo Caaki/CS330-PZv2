@@ -1,4 +1,4 @@
-package com.example.cs330_pzv2.presentation.anime_main_page.components
+package com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components
 
 import android.text.style.UnderlineSpan
 import androidx.compose.foundation.layout.height
@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cs330_pzv2.domain.model.Anime
-import com.example.cs330_pzv2.presentation.anime_main_page.components.TestComponents.TestComposeItem
+import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.TestComponents.TestComposeItem
 
 @Composable
 fun AnimeMainItemList(

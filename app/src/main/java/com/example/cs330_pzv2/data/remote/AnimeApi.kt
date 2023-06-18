@@ -1,7 +1,9 @@
 package com.example.cs330_pzv2.data.remote
 
 import com.example.cs330_pzv2.data.remote.dto.AnimeDto
+import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.HEAD
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -15,7 +17,15 @@ interface AnimeApi {
 
     @GET("/data")
     suspend fun getAnimeByTitle(
-        @Query("title_like") title: String,
+        @Query("title_like") title: String = "",
+        @Query("_page") page: Int = 1,
+        @Query("title_regex_flags") flags: String = "i"
+    ):List<AnimeDto>
+
+    @GET("/data")
+    suspend fun getAnimeByTitleAndTags(
+        @Query("title_like") title: String = "",
+        @Query("tags_like") tag: String = "",
         @Query("_page") page: Int = 1,
         @Query("title_regex_flags") flags: String = "i"
     ):List<AnimeDto>
@@ -33,10 +43,12 @@ interface AnimeApi {
         @Query("_page") page: Int = 1,
         @Query("type") type: String = "TOP",
         @Query("title_regex_flags") flags: String = "i"
-
     ):List<AnimeDto>
 
-
-
-
+    @GET("/data")
+    suspend fun getAnimeCountByTitleAndTags(
+        @Query("title_like") title: String = "",
+        @Query("tags_like") tag: String = "",
+        @Query("title_regex_flags") flags: String = "i"
+    ): List<AnimeDto>
 }

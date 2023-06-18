@@ -11,7 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cs330_pzv2.presentation.Screen
-import com.example.cs330_pzv2.presentation.anime_main_page.components.TestComponents.TestScreen
+import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.AnimeMainPageScreen
 import com.example.cs330_pzv2.ui.theme.CS330PZv2Theme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.AnimeMainPage.route
                         ) {
-                            TestScreen(navController = navController)
+                            AnimeMainPageScreen(navController = navController)
                         }
                     }
                 }

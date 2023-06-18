@@ -1,18 +1,20 @@
-package com.example.cs330_pzv2.presentation.anime_main_page.components.TestComponents
+package com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
@@ -27,13 +29,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.cs330_pzv2.domain.model.Anime
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun TestComposeItem(
+fun AnimeMainItem(
     anime: Anime,
     onItemClick: (Anime) ->Unit,
     modifier: Modifier = Modifier
@@ -51,8 +56,10 @@ fun TestComposeItem(
             contentDescription = null,
             modifier = Modifier
                 .height(300.dp)
-                .aspectRatio(3f / 3f)
+                .size(300.dp)
                 .padding(5.dp)
+
+
 
         )
         Column(
@@ -62,7 +69,8 @@ fun TestComposeItem(
             Text(
                 text = anime.title.take(20).let { if (anime.title.length > 20) "$it..." else it },
                 style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                color = MaterialTheme.colorScheme.tertiary
             )
 
             Text(
@@ -72,7 +80,7 @@ fun TestComposeItem(
                     .filter { it.length < 12 }
                     .joinToString(", "),
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = modifier.padding(start = 2.dp)
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(start = 2.dp)
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -93,7 +101,9 @@ fun TestComposeItem(
                     },
                     leadingIcon = {
                         Icon(imageVector = Icons.Outlined.Check,
-                            contentDescription = null )
+                            contentDescription = null,
+                            tint =MaterialTheme.colorScheme.tertiary
+                            )
                     }
                 )
             }
