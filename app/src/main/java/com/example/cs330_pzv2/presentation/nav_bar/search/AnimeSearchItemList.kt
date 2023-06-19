@@ -37,7 +37,6 @@ fun AnimeSearchItemList(
 ) {
 
     var currentPage by remember { mutableStateOf(1) }
-    val maxPages by remember{ mutableStateOf((if (viewModel.state.value.searchCount/10<10) viewModel.state.value.searchCount/10 else 1)) }
 
     Text(
         text = title + " anime",
@@ -86,16 +85,16 @@ fun AnimeSearchItemList(
                         Text(text = "Backward")
                     }
 
-                    Text(text = "Page ${currentPage} of ${maxPages}")
+                    Text(text = "Page ${currentPage} of ${viewModel.state.value.searchCount/10 + 1}")
 
                     Button(
                         onClick = {
-                            if (currentPage < maxPages) {
+                            if (currentPage < viewModel.state.value.searchCount/10 + 1) {
                                 ++currentPage
                             }
                             viewModel.searchAnime(page = currentPage)
                         },
-                        enabled = currentPage < (maxPages)
+                        enabled = currentPage < (viewModel.state.value.searchCount/10 + 1)
                     ) {
                         Text(text = "Forward")
                     }

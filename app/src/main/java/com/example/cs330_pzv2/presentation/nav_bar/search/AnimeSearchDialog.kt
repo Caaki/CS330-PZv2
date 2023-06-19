@@ -152,6 +152,7 @@ fun AnimeSearchDialog (
             item {
                 Button(onClick = {
                     val selectedGenresString = selectedGenres.joinToString(",")
+                    viewModel.getSearchCount()
                     viewModel.searchAnime(
                     tags = selectedGenresString, title = title.text
                     )

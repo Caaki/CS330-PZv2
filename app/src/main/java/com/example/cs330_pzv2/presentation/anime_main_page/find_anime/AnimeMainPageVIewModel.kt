@@ -56,7 +56,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
 
-    private fun getSearchCount(){
+    fun getSearchCount(){
         getAnimeCountUseCase(
             tags=_state.value.searchTags,
             title = _state.value.searchString,
@@ -84,6 +84,7 @@ class AnimeMainPageVIewModel @Inject constructor(
     }
 
     fun searchAnime(
+
         tags:String = _state.value.searchTags,
         title: String = _state.value.searchString,
         page: Int = 1){
