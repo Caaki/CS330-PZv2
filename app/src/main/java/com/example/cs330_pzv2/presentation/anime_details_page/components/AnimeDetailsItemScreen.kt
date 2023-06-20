@@ -1,5 +1,6 @@
 package com.example.cs330_pzv2.presentation.anime_details_page.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -36,6 +37,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,10 +55,12 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.cs330_pzv2.data.database.AnimeDetailEvent
 import com.example.cs330_pzv2.presentation.Screen
 import com.example.cs330_pzv2.presentation.anime_details_page.AnimeDetailsViewModel
 
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AnimeDetailsItemScreen(
@@ -64,6 +68,7 @@ fun AnimeDetailsItemScreen(
     navController:NavController,
     viewModel: AnimeDetailsViewModel = hiltViewModel()
 ) {
+
 
     var expanded by remember { mutableStateOf(false) }
     val state = viewModel.state.value
@@ -105,9 +110,9 @@ fun AnimeDetailsItemScreen(
                     .scale(1.5f)
                     .align(Alignment.BottomEnd),
                 onClick = {
-                    //viewModel.delete(state.kompanija?.id)
+                    viewModel.onEvent(AnimeDetailEvent.SaveAnimeDetail)
                     navController.navigate(Screen.AnimeMainPage.route)
-                }) {
+                }){
                 Icon(
                     imageVector = Icons.Filled.Add,
                     contentDescription = "Back",
@@ -115,6 +120,7 @@ fun AnimeDetailsItemScreen(
                 )
             }
         }
+
 
         state.anime?.let {
 
