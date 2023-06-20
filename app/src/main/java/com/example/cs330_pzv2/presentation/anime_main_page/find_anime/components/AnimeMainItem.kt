@@ -46,7 +46,9 @@ fun AnimeMainItem(
     Card(modifier = modifier.clickable { onItemClick(anime) }
         .fillMaxSize()
         .width(280.dp)
-        ,
+        .clickable {
+               onItemClick(anime)
+        },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         ), shape = MaterialTheme.shapes.large
@@ -58,9 +60,6 @@ fun AnimeMainItem(
                 .height(300.dp)
                 .size(300.dp)
                 .padding(5.dp)
-
-
-
         )
         Column(
             modifier = Modifier.padding(2.dp
@@ -70,7 +69,7 @@ fun AnimeMainItem(
                 text = anime.title.take(20).let { if (anime.title.length > 20) "$it..." else it },
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                color = MaterialTheme.colorScheme.tertiary
+                color = MaterialTheme.colorScheme.onPrimaryContainer
             )
 
             Text(

@@ -53,23 +53,23 @@ fun PopularAnime(
         } else {
 
             item {
-                AnimeMainItemList(animeList = state.action_anime, title = "Action")
+                AnimeMainItemList(animeList = state.action_anime, title = "Action",navController)
             }
 
             item {
-                AnimeMainItemList(animeList = state.mystery_anime, title = "Mystery")
+                AnimeMainItemList(animeList = state.mystery_anime, title = "Mystery",navController)
             }
 
             item {
-                AnimeMainItemList(animeList = state.isekai_anime, title = "Romance")
+                AnimeMainItemList(animeList = state.isekai_anime, title = "Romance",navController)
             }
 
             item {
-                AnimeMainItemList(animeList = state.yandere_anime, title = "Yandere")
+                AnimeMainItemList(animeList = state.yandere_anime, title = "Yandere",navController)
             }
 
             item {
-                AnimeMainItemList(animeList = state.romance_anime, title = "Romance")
+                AnimeMainItemList(animeList = state.romance_anime, title = "Romance",navController)
             }
         }
     }

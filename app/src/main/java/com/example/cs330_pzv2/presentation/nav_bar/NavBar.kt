@@ -13,6 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 
@@ -20,7 +24,8 @@ import androidx.navigation.NavController
 @Composable
 fun NavBar(
     viewModel: AnimeNavBarViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+
 ) {
     val tabs = listOf("Find", "Watch list", "Finished")
 
@@ -38,12 +43,14 @@ fun NavBar(
         TabRow(selectedTabIndex = viewModel.tabIndex) {
             tabs.forEachIndexed { index, title ->
                 Tab(
-                    text = { Text(title) },
+                    text = { Text(title, fontSize = 19.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    )},
                     selected = viewModel.tabIndex == index,
                     onClick = {
                         viewModel.tabIndex = index
                         viewModel.setShown(index)
-                    }
+                    },
                 )
             }
         }

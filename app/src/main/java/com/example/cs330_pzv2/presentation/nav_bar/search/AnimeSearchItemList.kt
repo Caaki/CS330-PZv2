@@ -25,7 +25,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.cs330_pzv2.domain.model.Anime
+import com.example.cs330_pzv2.presentation.Screen
 import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.AnimeMainPageVIewModel
 import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.AnimeMainItem
 
@@ -33,7 +35,8 @@ import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components
 fun AnimeSearchItemList(
     animeList: List<Anime>,
     title: String,
-    viewModel:AnimeMainPageVIewModel = hiltViewModel()
+    viewModel:AnimeMainPageVIewModel = hiltViewModel(),
+    navController: NavController
 ) {
 
     var currentPage by remember { mutableStateOf(1) }
@@ -61,7 +64,7 @@ fun AnimeSearchItemList(
                 AnimeMainItem(
                     anime = anime,
                     onItemClick = {
-                        //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                        navController.navigate(Screen.AnimeDetailsScreen.route+ "/${anime.id}")
                     },
                     modifier = Modifier.padding(16.dp)
                 )

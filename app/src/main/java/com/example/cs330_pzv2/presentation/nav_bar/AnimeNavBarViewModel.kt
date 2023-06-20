@@ -47,6 +47,7 @@ class AnimeNavBarViewModel @Inject constructor(
     fun setShown(selected: Int) {
         when (selected) {
             0 -> {
+
                 _state.value = _state.value.copy(
                     isMainPage = true,
                     localDatabase = false,

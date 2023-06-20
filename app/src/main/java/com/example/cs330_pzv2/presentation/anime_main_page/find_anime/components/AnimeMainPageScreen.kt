@@ -28,7 +28,7 @@ fun AnimeMainPageScreen (
             AnimeSearchDialog()
         }
         else if (navViewModel.state.value.isSearching){
-            AnimeSearchItemList(viewModel.state.value.search_anime,"Searched")
+            AnimeSearchItemList(viewModel.state.value.search_anime,"Searched",navController = navController)
         }
         else if (navViewModel.state.value.isMainPage && !navViewModel.state.value.isSearching) {
             PopularAnime(navController = navController)

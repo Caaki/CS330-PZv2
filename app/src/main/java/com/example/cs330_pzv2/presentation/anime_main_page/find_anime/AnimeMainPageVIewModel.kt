@@ -47,6 +47,10 @@ class AnimeMainPageVIewModel @Inject constructor(
 
     }
 
+    fun refresh(){
+        loadAllAnime()
+    }
+
     fun closeDialog(){
         _state.value = _state.value.copy(
             searchTags = "",

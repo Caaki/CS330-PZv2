@@ -11,13 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cs330_pzv2.domain.model.Anime
+import com.example.cs330_pzv2.presentation.Screen
 import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.TestComponents.TestComposeItem
 
 @Composable
 fun AnimeMainItemList(
     animeList: List<Anime>,
-    title: String
+    title: String,
+    navController:NavController
 ){
     Text(
         text = title +" anime",
@@ -35,7 +38,7 @@ fun AnimeMainItemList(
         items(animeList) { anime ->
             AnimeMainItem(
                 anime = anime, onItemClick = {
-                    //navController.navigate(Screen.PersonDetailScreen.route+ "/${person.id}")
+                    navController.navigate(Screen.AnimeDetailsScreen.route+ "/${anime.id}")
                 },
                 modifier = Modifier.padding(16.dp)
             )
