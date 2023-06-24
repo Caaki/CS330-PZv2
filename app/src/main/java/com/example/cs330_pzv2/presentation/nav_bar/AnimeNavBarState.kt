@@ -6,4 +6,5 @@ data class AnimeNavBarState(
     val isSearching: Boolean = false,
     val localDatabase:Boolean = false,
     val dialog: Boolean = false,
+    val isWatched :Boolean = false
 )

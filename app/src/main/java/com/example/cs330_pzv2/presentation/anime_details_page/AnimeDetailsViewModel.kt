@@ -1,30 +1,24 @@
 package com.example.cs330_pzv2.presentation.anime_details_page
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cs330_pzv2.common.Constants
 import com.example.cs330_pzv2.common.Resource
-import com.example.cs330_pzv2.data.database.AnimeDetailEvent
-import com.example.cs330_pzv2.data.database.dao.AnimeDetailDao
-import com.example.cs330_pzv2.domain.model.AnimeDetail
+import com.example.cs330_pzv2.domain.use_case.database_use_cases.add_anime.AddAnimeToDatabaseUseCase
 import com.example.cs330_pzv2.domain.use_case.get_by_id.GetAnimeById
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class AnimeDetailsViewModel @Inject constructor(
     val getAnimeById: GetAnimeById,
     savedStateHandle: SavedStateHandle,
-    private val dao:AnimeDetailDao
+    private val addAnimeToDatabaseUseCase: AddAnimeToDatabaseUseCase
 ): ViewModel(){
 
     private val _state = MutableStateFlow(AnimeDetailsState())
@@ -38,26 +32,12 @@ class AnimeDetailsViewModel @Inject constructor(
         }
     }
 
-    fun onEvent(event:AnimeDetailEvent){
-        when(event){
-
-            is AnimeDetailEvent.DeleteAnimeDetail -> {
-                viewModelScope.launch {
-                    dao.deleteAnimeDetail(event.animeDetail)
-                }
-            }
-            is AnimeDetailEvent.SaveAnimeDetail -> {
-
-                viewModelScope.launch {
-                    dao.insertAnimeDetail(animeDetail = state.value.anime?: null)
-                }
-            }
-            else  -> {
-
-            }
-
+    suspend fun addAnimeToDatabase(){
+        viewModelScope.launch {
+            state.value.anime?.let { addAnimeToDatabaseUseCase(it) }
         }
     }
+
 
     private fun getAnime(animeId: Int){
 

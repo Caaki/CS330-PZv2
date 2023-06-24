@@ -18,4 +18,6 @@ interface AnimeRepository {
     suspend fun getAnimeByTitleAndTags(tags:String, title:String, page:Int): List<AnimeDto>
 
     suspend fun getAnimeCountByTitleAndTags(tags:String, title:String): Int
+
+
 }

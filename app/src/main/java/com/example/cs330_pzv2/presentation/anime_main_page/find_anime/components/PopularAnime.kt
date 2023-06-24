@@ -20,14 +20,8 @@ fun PopularAnime(
     navController: NavController,
     viewModel: AnimeMainPageVIewModel = hiltViewModel()
 ) {
-
     val state = viewModel.state.value
-    
-
-
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-
-
         if (state.error.isNotBlank()) {
             item {
 

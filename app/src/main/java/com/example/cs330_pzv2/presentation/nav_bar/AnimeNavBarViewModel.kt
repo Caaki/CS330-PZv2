@@ -52,7 +52,8 @@ class AnimeNavBarViewModel @Inject constructor(
                     isMainPage = true,
                     localDatabase = false,
                     isSearching = false,
-                    dialog = false
+                    dialog = false,
+                    isWatched = false
                 )
             }
 
@@ -61,16 +62,18 @@ class AnimeNavBarViewModel @Inject constructor(
                     isMainPage = false,
                     isSearching = false,
                     localDatabase = true,
-                    dialog = false
+                    dialog = false,
+                    isWatched = false
                 )
             }
 
-            else -> {
+            2 -> {
                 _state.value = _state.value.copy(
                     isMainPage = false,
                     isSearching = false,
-                    localDatabase = true,
-                    dialog = false
+                    localDatabase = false,
+                    dialog = false,
+                    isWatched = true
                 )
             }
         }

@@ -27,4 +27,12 @@ class AnimeDatabaseRepositoryImpl(
     override suspend fun deleteAnimeDetail(animeDetail: AnimeDetail) {
         dao.deleteAnimeDetail(animeDetail)
     }
+
+    override fun getWatchedAnimeDetails(): Flow<List<AnimeDetail>> {
+        return dao.getWatchedAnimeDetails()
+    }
+
+    override fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>> {
+        return dao.getNotWatchedAnimeDetails()
+    }
 }

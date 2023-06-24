@@ -15,5 +15,7 @@ interface AnimeDatabaseRepository {
 
     suspend fun deleteAnimeDetail(animeDetail: AnimeDetail)
 
+    fun getWatchedAnimeDetails(): Flow<List<AnimeDetail>>
 
+    fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>>
 }

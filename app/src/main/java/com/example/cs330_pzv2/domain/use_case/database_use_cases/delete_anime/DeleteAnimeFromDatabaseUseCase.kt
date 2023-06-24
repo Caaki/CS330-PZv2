@@ -1,4 +1,4 @@
-package com.example.cs330_pzv2.domain.use_case.database_use_cases.get_all_anime
+package com.example.cs330_pzv2.domain.use_case.database_use_cases.delete_anime
 
 import com.example.cs330_pzv2.domain.model.AnimeDetail
 import com.example.cs330_pzv2.domain.repository.AnimeDatabaseRepository
@@ -7,7 +7,7 @@ import javax.inject.Inject
 class DeleteAnimeFromDatabaseUseCase @Inject constructor(
     private val repository: AnimeDatabaseRepository
 ) {
-    suspend fun invoke(animeDetail: AnimeDetail){
+    suspend operator fun invoke(animeDetail: AnimeDetail){
         repository.deleteAnimeDetail(animeDetail)
     }
 }

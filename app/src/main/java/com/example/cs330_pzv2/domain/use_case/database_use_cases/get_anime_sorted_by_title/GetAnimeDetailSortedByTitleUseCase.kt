@@ -1,4 +1,4 @@
-package com.example.cs330_pzv2.domain.use_case.database_use_cases.get_all_anime
+package com.example.cs330_pzv2.domain.use_case.database_use_cases.get_anime_sorted_by_title
 
 import com.example.cs330_pzv2.domain.model.AnimeDetail
 import com.example.cs330_pzv2.domain.repository.AnimeDatabaseRepository

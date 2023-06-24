@@ -20,11 +20,16 @@ interface AnimeDetailDao {
     @Query("SELECT * FROM animedetail")
     fun getAnimeDetail(): Flow<List<AnimeDetail>>
 
-
     @Query("SELECT * FROM animedetail ORDER BY title ASC")
     fun getAnimeDetailSortedByTitle(): Flow<List<AnimeDetail>>
 
     @Query("SELECT * FROM animedetail ORDER BY id ASC")
     fun getAnimeDetailSortedById(): Flow<List<AnimeDetail>>
+
+    @Query("SELECT * FROM animedetail WHERE watched=1")
+    fun getWatchedAnimeDetails(): Flow<List<AnimeDetail>>
+
+    @Query("SELECT * FROM animedetail WHERE watched=0")
+    fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>>
 
 }
