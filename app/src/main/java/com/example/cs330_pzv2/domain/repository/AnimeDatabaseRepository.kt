@@ -11,11 +11,13 @@ interface AnimeDatabaseRepository {
 
     fun getAnimeDetailSortedByTitle(): Flow<List<AnimeDetail>>
 
-    fun getAnimeDetailSortedById(): Flow<List<AnimeDetail>>
-
-    suspend fun deleteAnimeDetail(animeDetail: AnimeDetail)
+    suspend fun deleteAnimeDetail(animeId: AnimeDetail)
 
     fun getWatchedAnimeDetails(): Flow<List<AnimeDetail>>
 
     fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>>
+
+    fun getAnimeFromDatabaseById(animeId:Int):Flow<AnimeDetail>
+
+    suspend fun deleteAnimeFromDatabaseById(animeId: Int)
 }

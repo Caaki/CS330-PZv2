@@ -32,4 +32,10 @@ interface AnimeDetailDao {
     @Query("SELECT * FROM animedetail WHERE watched=0")
     fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>>
 
+    @Query("SELECT * FROM animedetail WHERE id = :animeId")
+    fun getAnimeById(animeId: Int): Flow<AnimeDetail>
+
+    @Query("DELETE FROM animedetail WHERE id = :animeId")
+    suspend fun deleteAnimeById(animeId: Int)
+
 }

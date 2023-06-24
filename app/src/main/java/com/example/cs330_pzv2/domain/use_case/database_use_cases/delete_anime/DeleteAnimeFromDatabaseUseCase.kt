@@ -7,7 +7,7 @@ import javax.inject.Inject
 class DeleteAnimeFromDatabaseUseCase @Inject constructor(
     private val repository: AnimeDatabaseRepository
 ) {
-    suspend operator fun invoke(animeDetail: AnimeDetail){
-        repository.deleteAnimeDetail(animeDetail)
+    suspend operator fun invoke(animeId: Int){
+        repository.deleteAnimeFromDatabaseById(animeId)
     }
 }

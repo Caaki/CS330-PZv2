@@ -44,7 +44,7 @@ fun AnimeDetailMainItemList(
         items(animeList) { anime ->
             AnimeDetailMainItem(
                 anime = anime, onItemClick = {
-                    navController.navigate(Screen.AnimeDetailsScreen.route+ "/${anime.id}")
+                    navController.navigate(Screen.AnimeDatabaseDetailScreen.route+ "/${anime.id}")
                 },
                 modifier = Modifier.padding(35.dp)
             )

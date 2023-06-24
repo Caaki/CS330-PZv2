@@ -31,7 +31,9 @@ class AnimeNavBarViewModel @Inject constructor(
             isMainPage = true,
             isSearching = false,
             localDatabase = false,
-            dialog = false
+            dialog = false,
+            isWatched = false
+
         )
     }
 
@@ -40,7 +42,8 @@ class AnimeNavBarViewModel @Inject constructor(
             isMainPage = false,
             isSearching = true,
             localDatabase = false,
-            dialog = false
+            dialog = false,
+            isWatched = false
         )
     }
 

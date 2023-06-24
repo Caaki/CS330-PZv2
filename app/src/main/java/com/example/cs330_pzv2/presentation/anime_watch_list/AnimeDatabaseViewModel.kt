@@ -11,6 +11,7 @@ import com.example.cs330_pzv2.domain.use_case.database_use_cases.get_not_watched
 import com.example.cs330_pzv2.domain.use_case.database_use_cases.get_watched_anime.GetWatchedAnimeUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AnimeDatabaseViewModel @Inject constructor(
@@ -27,6 +28,7 @@ class AnimeDatabaseViewModel @Inject constructor(
         getAllAnimeDatabase()
         getWatchedAnimeFromDatabase()
     }
+
 
     private fun getWatchedAnimeFromDatabase(){
         getWatchedAnimeUseCase().onEach {

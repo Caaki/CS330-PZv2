@@ -20,9 +20,6 @@ class AnimeDatabaseRepositoryImpl(
         return dao.getAnimeDetailSortedByTitle()
     }
 
-    override fun getAnimeDetailSortedById(): Flow<List<AnimeDetail>> {
-        return dao.getAnimeDetailSortedById()
-    }
 
     override suspend fun deleteAnimeDetail(animeDetail: AnimeDetail) {
         dao.deleteAnimeDetail(animeDetail)
@@ -34,5 +31,13 @@ class AnimeDatabaseRepositoryImpl(
 
     override fun getNotWatchedAnimeDetails(): Flow<List<AnimeDetail>> {
         return dao.getNotWatchedAnimeDetails()
+    }
+
+    override fun getAnimeFromDatabaseById(animeId: Int): Flow<AnimeDetail> {
+        return dao.getAnimeById(animeId = animeId)
+    }
+
+    override suspend fun deleteAnimeFromDatabaseById(animeId: Int) {
+        dao.deleteAnimeById(animeId)
     }
 }

@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cs330_pzv2.presentation.Screen
 import com.example.cs330_pzv2.presentation.anime_details_page.components.AnimeDetailsItemScreen
 import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.AnimeMainPageScreen
+import com.example.cs330_pzv2.presentation.watched_anime_details.AnimeDatabaseDetailScreen
 import com.example.cs330_pzv2.ui.theme.CS330PZv2Theme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,6 +42,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.AnimeDetailsScreen.route+ "/{animeId}"
                         ){
                             AnimeDetailsItemScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.AnimeDatabaseDetailScreen.route +"/{animeId}"
+                        ){
+                            AnimeDatabaseDetailScreen(navController = navController)
                         }
                     }
                 }
