@@ -38,8 +38,7 @@ class AnimeRepositoryImpl @Inject constructor(
             tag = tags,
             title = title,
         )
-        val count = response.size
-        return count
+        return response.size
     }
 
 
