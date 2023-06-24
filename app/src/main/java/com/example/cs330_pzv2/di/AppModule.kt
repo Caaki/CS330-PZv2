@@ -45,8 +45,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAnimeDetailDao(database: AnimeDetailDatabase): AnimeDetailDao {
-        return database.dao
+    fun provideContext(application: Application): Context {
+        return application.applicationContext
     }
 
     @Provides
@@ -61,8 +61,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideContext(application: Application): Context {
-        return application.applicationContext
+    fun provideAnimeDetailDao(database: AnimeDetailDatabase): AnimeDetailDao {
+        return database.dao
     }
 
 
