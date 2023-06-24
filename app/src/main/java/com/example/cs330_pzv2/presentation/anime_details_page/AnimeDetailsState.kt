@@ -6,7 +6,7 @@ data class AnimeDetailsState(
 
     val isLoading: Boolean = false,
     val anime: AnimeDetail? =null,
-    val error: String = "",
+    val error: String = ""
 
 
 )

@@ -6,6 +6,5 @@ sealed interface AnimeDetailEvent {
 
     object SaveAnimeDetail: AnimeDetailEvent
     data class DeleteAnimeDetail(val animeDetail: AnimeDetail): AnimeDetailEvent
-    object UpdateAnimeDetail: AnimeDetailEvent
 
 }

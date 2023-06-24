@@ -46,10 +46,14 @@ class AnimeDetailsViewModel @Inject constructor(
                     dao.deleteAnimeDetail(event.animeDetail)
                 }
             }
-            else  -> {
+            is AnimeDetailEvent.SaveAnimeDetail -> {
+
                 viewModelScope.launch {
                     dao.insertAnimeDetail(animeDetail = state.value.anime?: null)
                 }
+            }
+            else  -> {
+
             }
 
         }

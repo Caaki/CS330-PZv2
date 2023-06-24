@@ -8,8 +8,11 @@ import com.example.cs330_pzv2.data.database.AnimeDetailDatabase
 import com.example.cs330_pzv2.data.database.dao.AnimeDetailDao
 import com.example.cs330_pzv2.data.remote.AnimeApi
 import com.example.cs330_pzv2.data.repository.AnimeDatabaseRepositoryImpl
-import com.example.cs330_pzv2.data.repository.AnimeRepositoryImpl
+
 import com.example.cs330_pzv2.domain.repository.AnimeDatabaseRepository
+
+import com.example.cs330_pzv2.data.repository.AnimeRepositoryImpl
+
 import com.example.cs330_pzv2.domain.repository.AnimeRepository
 import dagger.Module
 import dagger.Provides
@@ -61,6 +64,7 @@ object AppModule {
     fun provideContext(application: Application): Context {
         return application.applicationContext
     }
+
 
     @Provides
     @Singleton
