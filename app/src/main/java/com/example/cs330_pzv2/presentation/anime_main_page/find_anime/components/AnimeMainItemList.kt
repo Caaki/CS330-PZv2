@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.cs330_pzv2.domain.model.Anime
 import com.example.cs330_pzv2.presentation.Screen
-import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.components.TestComponents.TestComposeItem
 
 @Composable
 fun AnimeMainItemList(

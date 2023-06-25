@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.cs330_pzv2.presentation.nav_bar.AnimeNavBarViewModel
 import com.example.cs330_pzv2.presentation.anime_main_page.find_anime.AnimeMainPageVIewModel
+import com.example.cs330_pzv2.util.SearchUtil
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -152,11 +153,15 @@ fun AnimeSearchDialog (
             item {
                 Button(onClick = {
                     val selectedGenresString = selectedGenres.joinToString(",")
-                    viewModel.getSearchCount()
-                    viewModel.searchAnime(
-                    tags = selectedGenresString, title = title.text
-                    )
-                    navViewModel.closeDialogSearch()
+                    if (!SearchUtil.validateSearch(title.text, selectedGenresString)){
+                        navViewModel.closeDialog()
+                    }else {
+                        viewModel.getSearchCount()
+                        viewModel.searchAnime(
+                            tags = selectedGenresString, title = title.text
+                        )
+                        navViewModel.closeDialogSearch()
+                    }
 
                 }) {
                     Text(text = "Submit")
