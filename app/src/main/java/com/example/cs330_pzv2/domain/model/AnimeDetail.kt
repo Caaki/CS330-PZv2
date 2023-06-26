@@ -18,5 +18,4 @@ data class AnimeDetail(
     @PrimaryKey(autoGenerate = false)
     val id: Int = -1,
     val watched: Boolean = false
-
 )

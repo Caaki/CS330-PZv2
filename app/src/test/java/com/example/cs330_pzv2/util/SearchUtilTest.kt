@@ -51,5 +51,4 @@ class SearchUtilTest{
         assertThat(result).isFalse()
     }
 
-
 }

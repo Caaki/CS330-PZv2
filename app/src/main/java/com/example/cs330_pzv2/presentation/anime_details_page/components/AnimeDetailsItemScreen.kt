@@ -196,24 +196,7 @@ fun AnimeDetailsItemScreen(
                         )
                     }
                 }
-//                Card(
-//                    elevation = CardDefaults.cardElevation(
-//                        defaultElevation = 5.dp
-//                    ),
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//
-//                ) {
-//                    Column(
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .padding(16.dp)
-//                            .clip(MaterialTheme.shapes.small)
-//                            .border(1.dp, color =Color.Transparent )
-//                    ) {
-//                    }
-//                }
-//            }
+
 
 
                 Card(

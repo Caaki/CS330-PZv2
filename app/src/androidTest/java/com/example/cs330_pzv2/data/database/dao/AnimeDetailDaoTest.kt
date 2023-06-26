@@ -1,12 +1,10 @@
-package com.example.cs330_pzv2.data.database
+package com.example.cs330_pzv2.data.database.dao
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.example.cs330_pzv2.data.database.AnimeDetailDatabase
-import com.example.cs330_pzv2.data.database.dao.AnimeDetailDao
 import com.example.cs330_pzv2.domain.model.AnimeDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
